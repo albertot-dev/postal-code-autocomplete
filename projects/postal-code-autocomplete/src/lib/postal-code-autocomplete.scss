@@ -1,0 +1,45 @@
+.autocomplete {
+    position: relative;
+    display:inline-block;
+
+    .items-autocomplete {
+        min-height: 20px;
+        max-height: 200px;
+        width: 300px;
+        max-width: 300px;
+        overflow-y: scroll;
+        top:100%;
+        left: 0;
+        right: 0;
+        border: 1px solid rgb(122, 174, 219);
+        .item-zip-code {
+          height: 30px;
+          padding: 5px 15px;
+            &:hover {
+                cursor: pointer;
+                background: #2da368;
+            }
+        }
+
+        & {
+            --scrollbarBG: transparent;
+            --thumbBG: #90A4AE;
+          }
+          &::-webkit-scrollbar {
+            width: 8px;
+          }
+          & {
+            scrollbar-width: thin;
+            scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+          }
+          &::-webkit-scrollbar-track {
+            background: var(--scrollbarBG);
+          }
+          &::-webkit-scrollbar-thumb {
+            background-color: var(--thumbBG) ;
+            border-radius: 6px;
+            border: 3px solid var(--scrollbarBG);
+          }
+    }
+}
+

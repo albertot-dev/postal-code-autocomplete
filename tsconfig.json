@@ -15,6 +15,12 @@
     },
     {
       "path": "./e2e/tsconfig.json"
+    },
+    {
+      "path": "./projects/postal-code-autocomplete/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/postal-code-autocomplete/tsconfig.spec.json"
     }
 ]
 }

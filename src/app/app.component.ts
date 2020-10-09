@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'example-postal-code-autocomplete';
+  zipCodeTest = {};
+  country = 'es';
 }

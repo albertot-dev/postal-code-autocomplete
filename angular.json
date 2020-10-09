@@ -123,6 +123,46 @@
           }
         }
       }
+    },
+    "postal-code-autocomplete": {
+      "projectType": "library",
+      "root": "projects/postal-code-autocomplete",
+      "sourceRoot": "projects/postal-code-autocomplete/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/postal-code-autocomplete/tsconfig.lib.json",
+            "project": "projects/postal-code-autocomplete/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/postal-code-autocomplete/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/postal-code-autocomplete/src/test.ts",
+            "tsConfig": "projects/postal-code-autocomplete/tsconfig.spec.json",
+            "karmaConfig": "projects/postal-code-autocomplete/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/postal-code-autocomplete/tsconfig.lib.json",
+              "projects/postal-code-autocomplete/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "example-postal-code-autocomplete"
 }
