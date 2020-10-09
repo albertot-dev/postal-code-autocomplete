@@ -1,8 +1,24 @@
 {
   "name": "postal-code-autocomplete",
-  "repository": "",
-  "description": "Librería para Angular",
+  "repository": {
+    "type":"git",
+    "url":"https://github.com/albertodam/postal-code-autocomplete"
+  },
+  "bugs": "https://github.com/albertodam/postal-code-autocomplete/issues",
+  "description": "Librería para Angular con input y dropdown de código postales. Angular library with zipcode input and dropdown.",
+  "author": "Alberto Tejero Morales",
+  "homepage": "https://github.com/albertodam/postal-code-autocomplete",
   "version": "0.0.1",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "zipcoe",
+    "postal-code",
+    "javascript",
+    "typescript",
+    "component",
+    "library"
+  ],
   "peerDependencies": {
     "@angular/common": "^4.0.0",
     "@angular/core": "^4.0.0"
