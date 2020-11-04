@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import {zipcode} from './zipcodes';
+import { zipcodes } from './zipcodes';
 
 @Component({
   selector: 'ng-postal-code-autocomplete',
@@ -8,18 +8,30 @@ import {zipcode} from './zipcodes';
     './postal-code-autocomplete.scss'
   ]
 })
-export class PostalCodeAutocompleteComponent {
+export class PostalCodeAutocompleteComponent implements OnInit {
   @Input() country: string;
   @Input() zipCode: any;
   @Output() zipCodeChange = new EventEmitter<any>();
-  inputPlace: string = '';
+  inputPlace: string;
   places: any[];
   closedDropdown: boolean;
 
+  ngOnInit(): void {
+    if(this.zipCode) {
+      this.inputPlace = this.zipCode;
+      this.closedDropdown = true;
+      const elementFounded = zipcodes[this.country].find(place => {
+        return place.zipcode.startsWith(this.inputPlace) 
+        || place.city.toLowerCase().startsWith(this.inputPlace.toLowerCase())
+        || (`${place.zipcode} ${place.city}, ${place.state}`).startsWith(this.inputPlace);
+     });
+     this.selectZipObject(elementFounded);
+    }
+  }
+
   searchZip(ev) {
     this.closedDropdown = false;
-    console.log(ev);
-    const elementsFiltered = zipcode[this.country].filter(place => {
+    const elementsFiltered = zipcodes[this.country].filter(place => {
        return place.zipcode.startsWith(ev) 
        || place.city.toLowerCase().startsWith(ev.toLowerCase())
        || (`${place.zipcode} ${place.city}, ${place.state}`).startsWith(ev);

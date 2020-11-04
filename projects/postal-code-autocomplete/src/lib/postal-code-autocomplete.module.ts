@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { PostalCodeAutocompleteComponent } from './postal-code-autocomplete.component';
+import { PostalCodeAutocompleteService } from './postal-code-autocomplete.service';
 
 
 
@@ -11,6 +12,8 @@ import { PostalCodeAutocompleteComponent } from './postal-code-autocomplete.comp
     CommonModule,
     FormsModule,
   ],
-  exports: [PostalCodeAutocompleteComponent]
+  exports: [PostalCodeAutocompleteComponent],
+  providers: [PostalCodeAutocompleteService],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class PostalCodeAutocompleteModule { }

@@ -1,6 +1,6 @@
 <div class="autocomplete">
     <input [(ngModel)]="inputPlace" (ngModelChange)="searchZip($event)">
-    <div class="items-autocomplete" *ngIf="inputPlace.length > 2 && !closedDropdown">
+    <div class="items-autocomplete" *ngIf="inputPlace ? (inputPlace.length > 2 && !closedDropdown) : false">
         <div class="item-zip-code" *ngFor="let place of places" (click)="selectZipObject(place)">
             {{place.zipcode}} {{place.city}}, {{place.state}}  
         </div>

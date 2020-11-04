@@ -135,10 +135,12 @@
           "options": {
             "tsConfig": "projects/postal-code-autocomplete/tsconfig.lib.json",
             "project": "projects/postal-code-autocomplete/ng-package.json"
+            
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/postal-code-autocomplete/tsconfig.lib.prod.json"
+              "tsConfig": "projects/postal-code-autocomplete/tsconfig.lib.prod.json",
+             
             }
           }
         },
