@@ -8,13 +8,11 @@ import { PostalCodeAutocompleteService } from 'postal-code-autocomplete';
 })
 export class AppComponent {
   title = 'example-postal-code-autocomplete';
-  zipCodeTest = "23009";
+  zipCodeTest = "";
   country = 'es';
 
 
   constructor(private readonly postalCode: PostalCodeAutocompleteService){
-    this.zipCodeTest = '23009';
-    console.log(postalCode.getZipCodeByCode(this.country,'23009'))
 
   }
 

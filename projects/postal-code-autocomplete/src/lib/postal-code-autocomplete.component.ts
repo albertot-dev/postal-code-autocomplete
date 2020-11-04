@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { zipcodes } from './zipcodes';
 
 @Component({
@@ -8,7 +8,7 @@ import { zipcodes } from './zipcodes';
     './postal-code-autocomplete.scss'
   ]
 })
-export class PostalCodeAutocompleteComponent implements OnInit {
+export class PostalCodeAutocompleteComponent implements OnInit, OnChanges {
   @Input() country: string;
   @Input() zipCode: any;
   @Output() zipCodeChange = new EventEmitter<any>();
@@ -17,34 +17,47 @@ export class PostalCodeAutocompleteComponent implements OnInit {
   closedDropdown: boolean;
 
   ngOnInit(): void {
-    if(this.zipCode) {
-      this.inputPlace = this.zipCode;
-      this.closedDropdown = true;
-      const elementFounded = zipcodes[this.country].find(place => {
-        return place.zipcode.startsWith(this.inputPlace) 
-        || place.city.toLowerCase().startsWith(this.inputPlace.toLowerCase())
-        || (`${place.zipcode} ${place.city}, ${place.state}`).startsWith(this.inputPlace);
-     });
-     this.selectZipObject(elementFounded);
-    }
+   this.initInput(this.zipCode);
   }
 
-  searchZip(ev) {
+  searchZip(ev): any {
     this.closedDropdown = false;
+    console.log()
     const elementsFiltered = zipcodes[this.country].filter(place => {
        return place.zipcode.startsWith(ev) 
        || place.city.toLowerCase().startsWith(ev.toLowerCase())
        || (`${place.zipcode} ${place.city}, ${place.state}`).startsWith(ev);
     });
-    
+
     this.places = elementsFiltered;
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if(typeof changes.zipCode.currentValue === 'string'){
+      this.initInput(changes.zipCode.currentValue);
+    }else{
+      const place = changes.zipCode.currentValue;
+      this.initInput(`${place.zipcode} ${place.city}, ${place.state}`);
+    }    
+  }
 
-  selectZipObject(place) {
-    this.inputPlace = `${place.zipcode} ${place.city}, ${place.state}`;
+  selectZipObject(place): void {
     this.closedDropdown = true;
+    this.inputPlace = `${place.zipcode} ${place.city}, ${place.state}`;
     this.zipCodeChange.emit(place);
+  }
+
+  private initInput(value: any): any{
+    if (value) {
+      this.inputPlace = value;
+      this.closedDropdown = true;
+      const elementFounded = zipcodes[this.country].find(place => {
+        return place.zipcode.startsWith(this.inputPlace)
+        || place.city.toLowerCase().startsWith(this.inputPlace.toLowerCase())
+        || (`${place.zipcode} ${place.city}, ${place.state}`).startsWith(this.inputPlace);
+      });
+      this.selectZipObject(elementFounded);
+    }
   }
 
 
