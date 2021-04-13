@@ -8,7 +8,7 @@
   "description": "Librería para Angular con input y dropdown de código postales. Angular library with zipcode input and dropdown.",
   "author": "Alberto Tejero Morales",
   "homepage": "https://github.com/albertodam/postal-code-autocomplete",
-  "version": "0.0.5",
+  "version": "0.0.8",
   "license": "MIT",
   "keywords": [
     "angular",
